@@ -1,1 +1,11 @@
-<p>books works!</p>
+<div class="container">
+    <div class="row book-container" *ngFor="let book of books">
+        <img [src]="book.url || 'assets/Book_IMG.jpg'">
+        <div>
+            <h2>{{book.title}}</h2>
+            <h5>{{book.author}}</h5>
+            <!--<p>{{book.description}}</p>-->
+            <button mat-button>MEGNÉZEM</button>
+        </div>
+    </div>
+</div>

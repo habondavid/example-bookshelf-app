@@ -1,0 +1,22 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    /*align-content: space-around;*/
+    /*align-items: center;*/
+    max-width: 800px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    div {
+        flex-grow: 1
+    }
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}

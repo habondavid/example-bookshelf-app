@@ -1,4 +1,5 @@
 export class Book {
+    id: string;
     title: string;
     author: string;
     publisher: string;
@@ -6,4 +7,6 @@ export class Book {
     publicationDate: Date;
     numberOfPages: number;
     format: string;
+    description: string;
+    url: string;
 }
