@@ -1,15 +1,24 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$dark-font-color: rgb(53, 53, 53);
+$light-font-color: rgb(212, 212, 212);
+$background-color: rgb(41, 57, 63);
+$yellow: rgb(190, 148, 56);
+
 .row {
     display: flex;
     flex-wrap: nowrap;
-    /*align-content: space-around;*/
-    /*align-items: center;*/
     max-width: 800px;
+}
+
+.space-filler {
+    flex-grow: 1;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
 
     div {
@@ -17,6 +26,19 @@
     }
 }
 
-body{
+body {
     font-family: 'Montserrat', sans-serif;
+    color: $light-font-color;
+    background-color: $background-color;
+}
+
+button {
+    height: 40px;
+    background-color: $yellow;
+    color: $light-font-color;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 12px;
 }

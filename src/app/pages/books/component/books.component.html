@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row book-container" *ngFor="let book of books">
-        <img [src]="book.url || 'assets/Book_IMG.jpg'">
-        <div>
-            <h2>{{book.title}}</h2>
-            <h5>{{book.author}}</h5>
-            <!--<p>{{book.description}}</p>-->
-            <button mat-button>MEGNÉZEM</button>
+        <img [src]="book.url ? book.url : 'assets/Book_IMG.jpg'">
+        <div class="book-data-container">
+            <h3>{{book.title}}</h3>
+            <h5><i>{{book.author}}</i></h5>
+            <p>{{book.publisher}} - {{book.publicationDate | date:"yyyy."}}</p>
+            <span class="space-filler"></span>
+            <button>Megnézem</button>
         </div>
     </div>
 </div>

@@ -1,15 +1,37 @@
-img {
-    max-width: 200px
-}
+$dark-font-color: rgb(43, 43, 43);
+$light-font-color: rgb(212, 212, 212);
+$yellow: rgb(180, 132, 28);
+$book-container-bg-color: rgb(89, 96, 104);
 
 .book-container {
-    background-color: rgb(233, 233, 233);
+    background-color: $book-container-bg-color;
     border-radius: 7px;
     padding: 10px;
     margin: 10px;
-    max-width: 500px;
+    width: 400px;
+    max-width: 400px;
     overflow-wrap: break-word;
+
+    img {
+        height: 230px;
+        width: auto;
+        overflow: hidden;
+    }
+
+    div {
+        margin-left: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    h3 {
+        margin-top: 0px;
+    }
 }
-h2 {
-    margin-top: 0px;
+
+.book-data-container {
+    display: flex;
+    flex-direction: column;
 }
