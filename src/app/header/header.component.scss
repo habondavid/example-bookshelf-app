@@ -1,3 +1,20 @@
 #title {
     margin: auto 15px auto 15px;
 }
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+#info-btn {
+    background: none;
+    border: none;
+
+    mat-icon {
+        transform: scale(1.3);
+    }
+
+    &:hover {
+        background-color: rgb(70, 70, 70);
+    }
+}

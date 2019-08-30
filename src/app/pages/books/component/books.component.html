@@ -1,4 +1,4 @@
-<div class="container">
+<div class="flex-container">
     <div class="row book-container" *ngFor="let book of books">
         <img [src]="book.url ? book.url : 'assets/Book_IMG.jpg'">
         <div class="book-data-container">
@@ -6,7 +6,7 @@
             <h5><i>{{book.author}}</i></h5>
             <p>{{book.publisher}} - {{book.publicationDate | date:"yyyy."}}</p>
             <span class="space-filler"></span>
-            <button>Megnézem</button>
+            <button [routerLink]="['/book-details', book.id]">Megnézem</button>
         </div>
     </div>
 </div>

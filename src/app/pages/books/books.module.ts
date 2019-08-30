@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BooksComponent } from './component/books.component';
 import { BooksRoutingModule } from './books-routing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ]
 })
 export class BooksModule { }

@@ -3,19 +3,20 @@
 $dark-font-color: rgb(53, 53, 53);
 $light-font-color: rgb(212, 212, 212);
 $background-color: rgb(41, 57, 63);
+$toolbar-bg-color:rgb(48, 67, 73);
 $yellow: rgb(190, 148, 56);
+$light-yellow: rgb(224, 175, 67);
 
 .row {
     display: flex;
     flex-wrap: nowrap;
-    max-width: 800px;
 }
 
 .space-filler {
     flex-grow: 1;
 }
 
-.container {
+.flex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -41,4 +42,16 @@ button {
     border-radius: 3px;
     font-weight: bold;
     padding: 12px;
+
+    &:hover {
+        background-color: $light-yellow;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.toolbar-bg {
+    background-color: $toolbar-bg-color;
 }
