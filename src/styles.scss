@@ -3,7 +3,6 @@
 $dark-font-color: rgb(53, 53, 53);
 $light-font-color: rgb(212, 212, 212);
 $background-color: rgb(41, 57, 63);
-$toolbar-bg-color:rgb(48, 67, 73);
 $yellow: rgb(190, 148, 56);
 $light-yellow: rgb(224, 175, 67);
 
@@ -31,6 +30,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: $light-font-color;
     background-color: $background-color;
+    margin: 0;
 }
 
 button {
@@ -42,16 +42,39 @@ button {
     border-radius: 3px;
     font-weight: bold;
     padding: 12px;
+    cursor: pointer;
 
     &:hover {
         background-color: $light-yellow;
     }
 }
 
+input {
+    height: 40px;
+    background-color: $dark-font-color;
+    color: $light-font-color;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
 .pointer {
     cursor: pointer;
 }
 
-.toolbar-bg {
-    background-color: $toolbar-bg-color;
+.mat-icon {
+    vertical-align: middle;
+ }
+
+ *:focus {
+    outline: none;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
 }

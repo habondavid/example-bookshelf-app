@@ -1,12 +1,13 @@
 export class Book {
     id: string;
     title: string;
-    author: string;
+    subtitle: string;
+    authors: string[];
     publisher: string;
     language: string;
-    publicationDate: Date;
+    publicationDate: string;
     numberOfPages: number;
-    format: string;
+    categories: string[];
     description: string;
-    url: string;
+    imgUrl: string;
 }

@@ -1,16 +1,24 @@
-<div style="max-width: 800px; margin: auto;">
-    <div *ngIf="book" class="flex-container">
-        <img [src]="book.url ? book.url : 'assets/Book_IMG.jpg'" width="300px">
+<div *ngIf="book" style="max-width: 1200px; margin: auto;">
+    <div class="flex-container">
+        <img [src]="book.imgUrl ? book.imgUrl : 'assets/Book_IMG.jpg'" width="300px">
         <div class="book-data-container">
-            <h1>{{book.title}}</h1>
-            <h2><i>{{book.author}}</i></h2>
+            <h1>
+                <span>{{book.title}}</span>
+                <span *ngIf="book.subtitle"> - {{book.subtitle}}</span>
+            </h1>
+            <h2><i *ngFor="let author of book.authors">{{author}}; </i></h2>
             <p><b>Kiadó:</b> {{book.publisher}}</p>
             <p><b>Nyelv:</b> {{book.language}}</p>
-            <p><b>Kiadás éve:</b> {{book.publicationDate | date:"yyyy."}}</p>
+            <p><b>Kiadás éve:</b> {{book.publicationDate}}</p>
             <p><b>Oldalak száma:</b> {{book.numberOfPages}}</p>
-            <p><b>Borító:</b> {{book.format}}</p>
+            <p *ngIf="book.categories">
+                <b>Kategóriák: </b><br>
+                <span *ngFor="let category of book.categories">{{category}}<br></span>
+            </p>
         </div>
     </div>
-    <hr>
-    <p>{{book.description}}</p>
+    <div *ngIf="book.description">
+        <hr>
+        <div id="description" [innerHTML]="book.description"></div>
+    </div>
 </div>

@@ -4,6 +4,8 @@ import { BooksComponent } from './component/books.component';
 import { BooksRoutingModule } from './books-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     BooksRoutingModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    ReactiveFormsModule
   ]
 })
 export class BooksModule { }

@@ -13,9 +13,10 @@ $book-container-bg-color: rgb(89, 96, 104);
     overflow-wrap: break-word;
 
     img {
+        margin: auto;
         height: 230px;
-        width: auto;
-        overflow: hidden;
+        max-width: 150px;
+        min-width: 150px;
     }
 
     div {
@@ -34,4 +35,8 @@ $book-container-bg-color: rgb(89, 96, 104);
 .book-data-container {
     display: flex;
     flex-direction: column;
+}
+
+.searchInput {
+    margin-right: 10px;
 }

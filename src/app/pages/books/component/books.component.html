@@ -1,10 +1,18 @@
+<div style="text-align: center;">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+        <input class="searchInput" placeholder="Keresés" formControlName="searchInput" required>
+        <button type="submit">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
+</div>
 <div class="flex-container">
     <div class="row book-container" *ngFor="let book of books">
-        <img [src]="book.url ? book.url : 'assets/Book_IMG.jpg'">
+        <img [src]="book.imgUrl ? book.imgUrl : 'assets/Book_IMG.jpg'">
         <div class="book-data-container">
             <h3>{{book.title}}</h3>
-            <h5><i>{{book.author}}</i></h5>
-            <p>{{book.publisher}} - {{book.publicationDate | date:"yyyy."}}</p>
+            <h5><i *ngFor="let author of book.authors">{{author}}</i></h5>
+            <p>{{book.publisher}} - {{book.publicationDate}}</p>
             <span class="space-filler"></span>
             <button [routerLink]="['/book-details', book.id]">Megnézem</button>
         </div>
