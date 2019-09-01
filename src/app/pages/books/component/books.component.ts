@@ -19,14 +19,19 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.initSearchForm();
+    if (this.bookService.lastSearch) {
+      this.searchForm.controls.searchInput.setValue(this.bookService.lastSearch);
+      this.search();
+    }
   }
 
   initSearchForm() {
-    this.searchForm = new FormGroup({searchInput: new FormControl('')});
+    this.searchForm = new FormGroup({ searchInput: new FormControl('') });
   }
 
   search() {
     const searchText = this.searchForm.controls.searchInput.value;
+    this.bookService.lastSearch = searchText;
     this.bookService.getBooks(searchText).subscribe(response => this.bindBookInfoFromResponse(response));
   }
 

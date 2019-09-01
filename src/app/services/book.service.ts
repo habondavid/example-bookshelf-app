@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookService {
 
+  lastSearch: string;
+
   constructor(private http: HttpClient) { }
 
   getBooks(search?: string): Observable<any> {
