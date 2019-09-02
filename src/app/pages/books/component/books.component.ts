@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/services/book/book.service';
 import { Book } from 'src/app/models/book.model';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -15,7 +15,7 @@ export class BooksComponent implements OnInit {
   books: Book[] = [];
   searchForm: FormGroup;
 
-  constructor(private bookService: BookService, private http: HttpClient) { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
     this.initSearchForm();
@@ -23,6 +23,7 @@ export class BooksComponent implements OnInit {
       this.searchForm.controls.searchInput.setValue(this.bookService.lastSearch);
       this.search();
     }
+    this.bookService.getFavoriteBooks().subscribe(data => console.log(data));
   }
 
   initSearchForm() {
@@ -40,9 +41,5 @@ export class BooksComponent implements OnInit {
   bindBookInfoFromResponse(response): void {
     this.books = [];
     response.items.forEach(element => this.books.push(this.bookService.getConvertedGoogleBook(element)));
-  }
-
-  addToReadList(book: Book) {
-    console.log(book);
   }
 }

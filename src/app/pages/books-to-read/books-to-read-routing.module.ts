@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { BookDetailsComponent } from './component/book-details.component';
+import { BooksToReadComponent } from './component/books-to-read.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'books-to-read', component: BooksToReadComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -15,4 +15,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class BookDetailsRoutingModule { }
+export class BooksToReadRoutingModule { }

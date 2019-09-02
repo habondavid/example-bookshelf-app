@@ -1,0 +1,23 @@
+<div class="flex-container">
+    <div class="row book-container" *ngFor="let book of books">
+        <img [src]="book.imgUrl ? book.imgUrl : 'assets/Book_IMG.jpg'">
+        <div class="book-data-container">
+            <div class="row max-width">
+                <h3>{{book.title}}</h3>
+                <span class="space-filler"></span>
+                <span id="add-btn" (click)="addToReadList(book)">
+                    <mat-icon>add</mat-icon>
+                </span>
+            </div>
+            <h5>
+                <i *ngFor="let author of book.authors; let i=index;">
+                    {{author}}
+                    <span *ngIf="book.authors.length - 1 > i">; </span>
+                </i>
+            </h5>
+            <p>{{book.publisher}} - {{book.publicationDate}}</p>
+            <span class="space-filler"></span>
+            <button [routerLink]="['/book-details', book.id]">Megnézem</button>
+        </div>
+    </div>
+</div>

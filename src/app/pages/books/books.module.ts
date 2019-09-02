@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksComponent } from './component/books.component';
 import { BooksRoutingModule } from './books-routing.module';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { DisplayBooksModule } from 'src/app/components/display-books/display-books.module';
 
 
 @NgModule({
@@ -13,10 +13,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    MatButtonModule,
     RouterModule,
+    ReactiveFormsModule,
     MatIconModule,
-    ReactiveFormsModule
+    DisplayBooksModule
   ]
 })
 export class BooksModule { }
