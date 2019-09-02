@@ -31,11 +31,18 @@ export class BooksComponent implements OnInit {
 
   search() {
     const searchText = this.searchForm.controls.searchInput.value;
-    this.bookService.lastSearch = searchText;
-    this.bookService.getBooks(searchText).subscribe(response => this.bindBookInfoFromResponse(response));
+    if (searchText) {
+      this.bookService.lastSearch = searchText;
+      this.bookService.getBooks(searchText).subscribe(response => this.bindBookInfoFromResponse(response));
+    }
   }
 
   bindBookInfoFromResponse(response): void {
+    this.books = [];
     response.items.forEach(element => this.books.push(this.bookService.getConvertedGoogleBook(element)));
+  }
+
+  addToReadList(book: Book) {
+    console.log(book);
   }
 }

@@ -1,7 +1,9 @@
 $dark-font-color: rgb(43, 43, 43);
 $light-font-color: rgb(212, 212, 212);
 $yellow: rgb(180, 132, 28);
+$light-yellow: rgb(224, 175, 67);
 $book-container-bg-color: rgb(89, 96, 104);
+$blue: rgb(144, 182, 226);
 
 .book-container {
     background-color: $book-container-bg-color;
@@ -37,6 +39,19 @@ $book-container-bg-color: rgb(89, 96, 104);
     flex-direction: column;
 }
 
-.searchInput {
+input {
     margin-right: 10px;
+    border: 1px solid $yellow;
+    max-width: 250px;
+}
+
+#add-btn {
+    cursor: pointer;
+    margin-right: 7px;
+    color: $blue;
+    mat-icon {
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
 }
