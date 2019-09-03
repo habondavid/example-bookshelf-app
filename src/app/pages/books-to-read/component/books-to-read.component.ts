@@ -9,11 +9,15 @@ import { Book } from 'src/app/models/book.model';
 })
 export class BooksToReadComponent implements OnInit {
   books: Book[] = [];
+  loadingContent = true;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    this.bookService.getFavoriteBooks().subscribe(books => this.books = books);
+    this.bookService.getFavoriteBooks().subscribe(books => {
+      this.loadingContent = false;
+      this.books = books;
+    });
   }
 
 }

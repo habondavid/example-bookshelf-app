@@ -1,4 +1,10 @@
 <div class="row-center">
-    <h1>Elolvasom lista</h1>
+    <h1>Elolvasandó könyvek</h1>
 </div>
-<app-display-books [books]="books"></app-display-books>
+<mat-spinner *ngIf="loadingContent"></mat-spinner>
+<app-display-books [books]="books">
+    <div class="center" *ngIf="books.length === 0 && !loadingContent">
+        <p>Még nincs a listádon könyv. Ideje felvenni párat!</p>
+        <button routerLink="['/books']">Könyvek keresése</button>
+    </div>
+</app-display-books>

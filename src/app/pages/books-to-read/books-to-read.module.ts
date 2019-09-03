@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BooksToReadComponent } from './component/books-to-read.component';
 import { BooksToReadRoutingModule } from './books-to-read-routing.module';
 import { DisplayBooksModule } from 'src/app/components/display-books/display-books.module';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { DisplayBooksModule } from 'src/app/components/display-books/display-boo
   imports: [
     CommonModule,
     BooksToReadRoutingModule,
-    DisplayBooksModule
+    DisplayBooksModule,
+    MatProgressSpinnerModule,
+    RouterModule
   ]
 })
 export class BooksToReadModule { }

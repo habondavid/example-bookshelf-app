@@ -3,7 +3,7 @@ import { Book } from '../../models/book.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class BookService {
   }
 
   saveBookToFavorites(book: Book) {
-    return this.db.list(`/booksToRead/${this.auth.authState.uid}`).push(book);
+    return this.db.list(`/booksToRead/${this.auth.authState.uid}`).set(book.id, book);
   }
 
   deleteBookFromFavorites(bookId: string) {
