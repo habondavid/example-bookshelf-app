@@ -11,14 +11,10 @@ $blue: rgb(144, 182, 226);
     overflow-wrap: break-word;
 
     img {
-        margin: auto;
+        margin: auto 10px auto auto;
         height: 230px;
         max-width: 150px;
         min-width: 150px;
-    }
-
-    div {
-        margin-left: 10px;
     }
 
     button {
