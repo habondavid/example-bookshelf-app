@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DisplayBooksComponent } from './component/display-books.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ],
   exports: [
     DisplayBooksComponent

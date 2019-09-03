@@ -23,7 +23,6 @@ export class BooksComponent implements OnInit {
       this.searchForm.controls.searchInput.setValue(this.bookService.lastSearch);
       this.search();
     }
-    this.bookService.getFavoriteBooks().subscribe(data => console.log(data));
   }
 
   initSearchForm() {

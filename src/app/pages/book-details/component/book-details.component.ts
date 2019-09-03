@@ -20,7 +20,7 @@ export class BookDetailsComponent implements OnInit {
 
   getBookDetails() {
     const bookId = this.route.snapshot.params.id;
-    this.bookService.getBook(bookId).subscribe(googleBook => this.book = this.bookService.getConvertedGoogleBook(googleBook));
+    this.bookService.getBook(bookId).subscribe(async (googleBook) => this.book = await this.bookService.getConvertedGoogleBook(googleBook));
   }
 
 }

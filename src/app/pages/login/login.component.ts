@@ -9,11 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth: AuthService, private router: Router) { }
-
-  ngOnInit() {
-    this.auth.signOut();
+  constructor(public auth: AuthService, private router: Router) {
+    this.auth.user$.subscribe(user => {
+      if (user) {
+        this.router.navigate(['books']);
+      }
+    });
   }
+
+  ngOnInit() {}
 
   login() {
     this.auth.googleSignin().then((auth) => {

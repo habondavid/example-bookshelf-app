@@ -9,5 +9,6 @@ export class Book {
     numberOfPages: number;
     categories: string[];
     description: string;
+    favorite: boolean;
     imgUrl: string;
 }

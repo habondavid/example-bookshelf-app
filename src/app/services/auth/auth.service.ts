@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.user$ = this.afAuth.authState;
-    this.user$.subscribe(userAuth => {console.log(userAuth); this.authState = userAuth; });
+    this.user$.subscribe(userAuth => this.authState = userAuth);
   }
 
   async googleSignin() {

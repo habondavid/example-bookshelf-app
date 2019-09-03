@@ -5,8 +5,11 @@
             <div class="row max-width">
                 <h3>{{book.title}}</h3>
                 <span class="space-filler"></span>
-                <span id="add-btn" (click)="addToReadList(book)">
+                <span *ngIf="!book.favorite" id="add-btn" (click)="addToReadList(book)">
                     <mat-icon>add</mat-icon>
+                </span>
+                <span *ngIf="book.favorite" id="add-btn" (click)="removeFromReadList(book.id)">
+                    <mat-icon>remove</mat-icon>
                 </span>
             </div>
             <h5>

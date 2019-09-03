@@ -10,6 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { LoginComponent } from './pages/login/login.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,

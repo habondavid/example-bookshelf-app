@@ -11,7 +11,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 export class BookService {
 
   lastSearch: string;
-  private booksToRead: AngularFireList<any[]>;
 
   constructor(private http: HttpClient, private auth: AuthService, private db: AngularFireDatabase) {}
 
@@ -28,11 +27,11 @@ export class BookService {
   }
 
   saveBookToFavorites(book: Book) {
-    this.db.list(`/booksToRead/${this.auth.authState.uid}`).push(book);
+    return this.db.list(`/booksToRead/${this.auth.authState.uid}`).push(book);
   }
 
-  deleteBookFromFavorites(book: Book) {
-    this.db.list(`/booksToRead/${this.auth.authState.uid}/${book.id}`).remove();
+  deleteBookFromFavorites(bookId: string) {
+    return this.db.list(`/booksToRead/${this.auth.authState.uid}/${bookId}`).remove();
   }
 
   getConvertedGoogleBook(googleBook): Book {
@@ -48,6 +47,7 @@ export class BookService {
     book.numberOfPages = volumeInfo.pageCount ? volumeInfo.pageCount : '';
     book.categories = volumeInfo.categories ? volumeInfo.categories : '';
     book.description = volumeInfo.description ? volumeInfo.description : '';
+    this.checkIfBookIsFavorite(book);
     this.setBookImageUrl(book, volumeInfo.imageLinks);
     return book;
   }
@@ -62,5 +62,12 @@ export class BookService {
         book.imgUrl = imageLinks.smallThumbnail;
       }
     }
+  }
+
+  checkIfBookIsFavorite(book: Book): void {
+    this.db.list(`/booksToRead/${this.auth.authState.uid}`).valueChanges().subscribe(bookList => {
+      const index = bookList.findIndex((element: any) => element.id === book.id);
+      book.favorite = (index > -1);
+    });
   }
 }
