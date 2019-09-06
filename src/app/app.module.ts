@@ -12,6 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -25,17 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(
-      {
-        apiKey: 'AIzaSyCqUos_d1rRFGk0wD5wtHxalmZXqcCPNZc',
-        authDomain: 'example-bookshelf-app.firebaseapp.com',
-        databaseURL: 'https://example-bookshelf-app.firebaseio.com',
-        projectId: 'example-bookshelf-app',
-        storageBucket: '',
-        messagingSenderId: '6641015644',
-        appId: '1:6641015644:web:be18576ec192201b'
-      }
-    ),
+    AngularFireModule.initializeApp(environment.firebase),
     MatProgressSpinnerModule
   ],
   providers: [AngularFireAuth, AngularFireDatabase],

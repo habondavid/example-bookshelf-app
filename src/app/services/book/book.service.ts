@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +16,23 @@ export class BookService {
   constructor(private http: HttpClient, private auth: AuthService, private db: AngularFireDatabase) {}
 
   getBooks(search?: string): Observable<any> {
-    return this.http.get('https://www.googleapis.com/books/v1/volumes?q=' + search);
+    return this.http.get(environment.bookSearchURL + search);
   }
 
   getBook(id: string): Observable<any> {
-    return this.http.get('https://www.googleapis.com/books/v1/volumes/' + id);
+    return this.http.get(environment.bookDetailsURL + id);
   }
 
   getFavoriteBooks(): Observable<any> {
-    return this.db.list(`/booksToRead/${this.auth.authState.uid}`).valueChanges();
+    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).valueChanges();
   }
 
   saveBookToFavorites(book: Book) {
-    return this.db.list(`/booksToRead/${this.auth.authState.uid}`).set(book.id, book);
+    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).set(book.id, book);
   }
 
   deleteBookFromFavorites(bookId: string) {
-    return this.db.list(`/booksToRead/${this.auth.authState.uid}/${bookId}`).remove();
+    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}/${bookId}`).remove();
   }
 
   getConvertedGoogleBook(googleBook): Book {
@@ -47,7 +48,7 @@ export class BookService {
     book.numberOfPages = volumeInfo.pageCount ? volumeInfo.pageCount : '';
     book.categories = volumeInfo.categories ? volumeInfo.categories : '';
     book.description = volumeInfo.description ? volumeInfo.description : '';
-    this.checkIfBookIsFavorite(book);
+    this.setBookIsFavoriteProperty(book);
     this.setBookImageUrl(book, volumeInfo.imageLinks);
     return book;
   }
@@ -64,8 +65,8 @@ export class BookService {
     }
   }
 
-  checkIfBookIsFavorite(book: Book): void {
-    this.db.list(`/booksToRead/${this.auth.authState.uid}`).valueChanges().subscribe(bookList => {
+  setBookIsFavoriteProperty(book: Book): void {
+    this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).valueChanges().subscribe(bookList => {
       const index = bookList.findIndex((element: any) => element.id === book.id);
       book.favorite = (index > -1);
     });
