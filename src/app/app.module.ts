@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         messagingSenderId: '6641015644',
         appId: '1:6641015644:web:be18576ec192201b'
       }
-    )
+    ),
+    MatProgressSpinnerModule
   ],
   providers: [AngularFireAuth, AngularFireDatabase],
   bootstrap: [AppComponent]

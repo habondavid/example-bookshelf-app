@@ -1,7 +1,12 @@
 <div class="login-page-container">
-    <div class="center">
+    <div *ngIf="!pageIsLoading" class="center">
         <img src="assets/Book-icon.png" width="200px">
         <h1>Example Bookshelf Application</h1>
         <button (click)="login()">Bejelentkezés Google felhasználóval</button>
+    </div>
+
+    <div *ngIf="pageIsLoading" class="center">
+        <mat-spinner class="center"></mat-spinner>
+        <h1>{{loadingStatusMessage}}</h1>
     </div>
 </div>

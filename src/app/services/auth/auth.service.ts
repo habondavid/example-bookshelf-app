@@ -11,6 +11,7 @@ export class AuthService {
 
   user$: Observable<any>;
   authState = null;
+  loggingOut = false;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.user$ = this.afAuth.authState;
@@ -18,12 +19,14 @@ export class AuthService {
   }
 
   async googleSignin() {
+    this.loggingOut = false;
     const provider = new auth.GoogleAuthProvider();
     const credential = await this. afAuth.auth.signInWithPopup(provider);
     return credential.user;
   }
 
   async signOut() {
+    this.loggingOut = true;
     await this.afAuth.auth.signOut();
     return this.router.navigate(['/login']);
   }
