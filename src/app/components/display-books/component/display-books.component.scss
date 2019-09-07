@@ -6,7 +6,6 @@ $blue: rgb(144, 182, 226);
     border-radius: 7px;
     padding: 10px;
     margin: 10px;
-    width: 400px;
     max-width: 400px;
     overflow-wrap: break-word;
 
@@ -33,7 +32,6 @@ $blue: rgb(144, 182, 226);
 
 #add-btn {
     cursor: pointer;
-    margin-right: 7px;
     color: $blue;
     mat-icon {
         &:hover{

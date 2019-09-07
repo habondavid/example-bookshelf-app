@@ -21,7 +21,7 @@
 
   <mat-sidenav-content>
 
-    <mat-toolbar *ngIf="isHandset$ | async">
+    <mat-toolbar *ngIf="isHandset$ | async" class="margin-bottom">
       <button type="button" mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
@@ -29,7 +29,7 @@
       <img [src]="user.photoURL" [matMenuTriggerFor]="userProfile">
     </mat-toolbar>
 
-    <mat-toolbar *ngIf="!(isHandset$ | async)">
+    <mat-toolbar *ngIf="!(isHandset$ | async)" class="margin-bottom">
       <img src="assets\Book-icon.png">
       <button *ngFor="let nav of navList" class="header-btn" [routerLink]="nav.link" routerLinkActive="active-item">
         <mat-icon class="margin-right">{{nav.icon}}</mat-icon><span>{{nav.text}}</span>
