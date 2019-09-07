@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav *ngIf="isHandset$ | async" #sidenav class="sidenav" fixedInViewport mode="over" [opened]="false"
+    (click)="onSidenavClick()">
+    <mat-toolbar>
+      <div class="row pointer" routerLink="/books">
+        <img src="assets\Book-icon.png">
+        <h3 id="title">Bookshelf</h3>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let nav of navList" [routerLink]="nav.link" routerLinkActive="active-item">
+        <mat-icon class="margin-right">{{nav.icon}}</mat-icon><span>{{nav.text}}</span>
+      </a>
+      <a mat-list-item (click)="authService.signOut()">
+        <mat-icon class="margin-right">logout</mat-icon>
+        <span>Kilépés</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar *ngIf="isHandset$ | async">
+      <button type="button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="space-filler"></span>
+      <img [src]="user.photoURL" [matMenuTriggerFor]="userProfile">
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="!(isHandset$ | async)">
+      <img src="assets\Book-icon.png">
+      <button *ngFor="let nav of navList" class="header-btn" [routerLink]="nav.link" routerLinkActive="active-item">
+        <mat-icon class="margin-right">{{nav.icon}}</mat-icon><span>{{nav.text}}</span>
+      </button>
+      <span class="space-filler"></span>
+      <img [src]="user.photoURL" [matMenuTriggerFor]="userProfile">
+    </mat-toolbar>
+
+    <mat-menu #userProfile="matMenu">
+      <div mat-menu-item><b>{{user.displayName}}</b></div>
+      <div mat-menu-item>{{user.email}}</div>
+      <button mat-menu-item (click)="authService.signOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Kilépés</span>
+      </button>
+    </mat-menu>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

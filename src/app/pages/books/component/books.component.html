@@ -1,8 +1,11 @@
-<form [formGroup]="searchForm" (ngSubmit)="search()" class="row-center" style="box-sizing: border-box">
+<div class="center margin-bottom">
+    <h1>Könyv böngésző</h1>
+</div>
+<form [formGroup]="searchForm" (ngSubmit)="search()" class="row-center margin-bottom" style="box-sizing: border-box">
     <input placeholder="Keresés" formControlName="searchInput" required>
     <button id="searchBtn" type="submit">
         <mat-icon>search</mat-icon>
     </button>
 </form>
-
 <app-display-books [books]="books"></app-display-books>
+<h4 *ngIf="noResult" class="center">Nincs találat...</h4>

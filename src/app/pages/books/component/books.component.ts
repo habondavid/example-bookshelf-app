@@ -13,6 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class BooksComponent implements OnInit {
 
   books: Book[] = [];
+  noResult = false;
   searchForm: FormGroup;
 
   constructor(private bookService: BookService) { }
@@ -39,6 +40,11 @@ export class BooksComponent implements OnInit {
 
   bindBookInfoFromResponse(response): void {
     this.books = [];
-    response.items.forEach(element => this.books.push(this.bookService.getConvertedGoogleBook(element)));
+    if (response.items) {
+      this.noResult = false;
+      response.items.forEach(element => this.books.push(this.bookService.getConvertedGoogleBook(element)));
+    } else {
+      this.noResult = true;
+    }
   }
 }

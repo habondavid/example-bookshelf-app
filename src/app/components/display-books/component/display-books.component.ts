@@ -19,12 +19,12 @@ export class DisplayBooksComponent implements OnInit {
   addToReadList(book: Book) {
     book.favorite = true;
     this.bookService.saveBookToFavorites(book);
-    this.openSnackBar('Mentve az elolvasandó könyvek közé.');
+    this.openSnackBar('Mentve a könyvespolcodra!');
   }
 
   removeFromReadList(bookId: string) {
     this.bookService.deleteBookFromFavorites(bookId).then(data => console.log(data));
-    this.openSnackBar('Eltávolítva az elolvasandó könyvek közül.');
+    this.openSnackBar('Eltávolítva a könyvespolcodról!');
   }
 
   openSnackBar(message: string): void {

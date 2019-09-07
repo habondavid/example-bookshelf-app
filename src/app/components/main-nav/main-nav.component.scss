@@ -1,0 +1,78 @@
+$header-color: rgb(48, 67, 73);
+$dark-font-color: rgb(53, 53, 53);
+$light-font-color: rgb(212, 212, 212);
+$background-color: rgb(41, 57, 63);
+$yellow: rgb(190, 148, 56);
+$light-yellow: rgb(224, 175, 67);
+
+@mixin header-style {
+  font-family: 'Montserrat', sans-serif;
+  color: $light-font-color;
+  background-color: $header-color;
+}
+
+#title {
+  margin: auto 15px auto 15px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    margin-right: 10px;
+    transform: scale(1.3);
+  }
+
+  &:hover {
+      background-color: rgb(97, 104, 128);
+  }
+}
+
+.active-item {
+  background-color: rgb(73, 94, 122);
+}
+
+
+/*************************************************/
+
+.sidenav-container, .sidenav, mat-toolbar {
+  @include header-style()
+}
+
+mat-toolbar {
+  padding: 0;
+  top: 0;
+  z-index: 1;
+  div {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  img {
+    border-radius: 20px;
+    width: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+mat-sidenav-content {
+  background-color: $background-color;
+}
+
+.sidenav {
+  width: 200px;
+
+  a {
+    color: $light-font-color;
+  }
+}
+
+// .mat-toolbar.mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
