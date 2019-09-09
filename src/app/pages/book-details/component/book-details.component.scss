@@ -5,6 +5,11 @@ $light-yellow: rgb(155, 129, 74);
     margin: auto;
     width: 80%;
 
+    img {
+        width: 300px;
+        height: auto;
+    }
+
     @media screen and (max-width: 800px) {
         width: 100%;
     }
