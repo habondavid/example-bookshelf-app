@@ -24,15 +24,16 @@ export class BookService {
   }
 
   getFavoriteBooks(): Observable<any> {
-    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).valueChanges();
+    return this.db.list(`${environment.bookshelfURL}/${this.auth.authState.uid}`).valueChanges();
   }
 
   saveBookToFavorites(book: Book) {
-    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).set(book.id, book);
+    book.favorite = true;
+    return this.db.list(`${environment.bookshelfURL}/${this.auth.authState.uid}`).set(book.id, book);
   }
 
   deleteBookFromFavorites(bookId: string) {
-    return this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}/${bookId}`).remove();
+    return this.db.list(`${environment.bookshelfURL}/${this.auth.authState.uid}/${bookId}`).remove();
   }
 
   getConvertedGoogleBook(googleBook): Book {
@@ -53,6 +54,13 @@ export class BookService {
     return book;
   }
 
+  setBookIsFavoriteProperty(book: Book): void {
+    this.db.list(`${environment.bookshelfURL}/${this.auth.authState.uid}`).valueChanges().subscribe(bookList => {
+      const index = bookList.findIndex((element: any) => element.id === book.id);
+      book.favorite = (index > -1);
+    });
+  }
+
   setBookImageUrl(book: Book, imageLinks) {
     if (imageLinks) {
       if (imageLinks.medium) {
@@ -63,12 +71,5 @@ export class BookService {
         book.imgUrl = imageLinks.smallThumbnail;
       }
     }
-  }
-
-  setBookIsFavoriteProperty(book: Book): void {
-    this.db.list(`${environment.booksToReadURL}/${this.auth.authState.uid}`).valueChanges().subscribe(bookList => {
-      const index = bookList.findIndex((element: any) => element.id === book.id);
-      book.favorite = (index > -1);
-    });
   }
 }
