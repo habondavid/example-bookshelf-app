@@ -12,7 +12,8 @@ $blue: rgb(144, 182, 226);
 
     img {
         margin: auto 10px auto auto;
-        height: 230px;
+        max-height: 230px;
+        min-height: 230px;
         max-width: 150px;
         min-width: 150px;
     }
