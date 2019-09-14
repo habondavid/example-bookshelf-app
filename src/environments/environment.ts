@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   bookSearchURL: 'https://www.googleapis.com/books/v1/volumes?q=',
   bookDetailsURL: 'https://www.googleapis.com/books/v1/volumes/',
+  bookshelfURL: '/booksToRead',
   firebase: {
-     /** Your firebase config... */
-  },
-  booksToReadURL: '/booksToRead'
+    /** Your firebase config... */
+  }
 };
 
 /*
