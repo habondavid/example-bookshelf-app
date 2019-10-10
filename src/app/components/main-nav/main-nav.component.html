@@ -30,17 +30,23 @@
     </mat-toolbar>
 
     <mat-toolbar *ngIf="!(isHandset$ | async)" class="margin-bottom">
+      
       <img src="assets\Book-icon.png">
       <button *ngFor="let nav of navList" class="header-btn" [routerLink]="nav.link" routerLinkActive="active-item">
         <mat-icon class="margin-right">{{nav.icon}}</mat-icon><span>{{nav.text}}</span>
       </button>
+
       <span class="space-filler"></span>
-      <img [src]="user.photoURL" [matMenuTriggerFor]="userProfile">
+
+      <img *ngIf="user.photoURL" [src]="user.photoURL" [matMenuTriggerFor]="userProfile">
+      <span *ngIf="!user.photoURL" [matMenuTriggerFor]="userProfile">
+        <mat-icon id="account_icon">account_circle</mat-icon>
+      </span>
     </mat-toolbar>
 
     <mat-menu #userProfile="matMenu">
-      <div mat-menu-item><b>{{user.displayName}}</b></div>
-      <div mat-menu-item>{{user.email}}</div>
+      <div mat-menu-item *ngIf="user.displayName"><b>{{user.displayName}}</b></div>
+      <div mat-menu-item *ngIf="user.email">{{user.email}}</div>
       <button mat-menu-item (click)="authService.signOut()">
         <mat-icon>logout</mat-icon>
         <span>Kilépés</span>

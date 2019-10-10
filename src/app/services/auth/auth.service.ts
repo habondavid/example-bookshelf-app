@@ -25,6 +25,11 @@ export class AuthService {
     return credential.user;
   }
 
+  anonymousSignin() {
+    this.loggingOut = false;
+    return this.afAuth.auth.signInAnonymously();
+  }
+
   async signOut() {
     this.loggingOut = true;
     await this.afAuth.auth.signOut();

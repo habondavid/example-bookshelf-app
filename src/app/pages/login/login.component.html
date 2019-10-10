@@ -2,7 +2,8 @@
     <div *ngIf="!pageIsLoading" class="center">
         <img src="assets/Book-icon.png" width="200px">
         <h1>Example Bookshelf Application</h1>
-        <button (click)="login()">Bejelentkezés Google felhasználóval</button>
+        <button (click)="login()">Bejelentkezés Google felhasználóval</button><br><br>
+        <button (click)="loginAnonymously()">Kipróbálás bejelentkezés nélkül</button>
     </div>
 
     <div *ngIf="pageIsLoading" class="center">

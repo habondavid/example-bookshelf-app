@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
 
   welcomeTheUser(user) {
     this.pageIsLoading = true;
-    this.loadingStatusMessage = GREETINGS_MESSAGE + user.displayName + '!';
+    const username = user.displayName ? user.displayName : '';
+    this.loadingStatusMessage = GREETINGS_MESSAGE + username + '!';
     setTimeout(() => this.router.navigate(['books']), MESSAGE_WAITING_TIME);
   }
 
@@ -54,5 +55,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.googleSignin();
+  }
+
+  loginAnonymously() {
+    this.auth.anonymousSignin();
   }
 }
